@@ -26,13 +26,6 @@ app.use('/api', require('./routes/productRouter'));
 app.use('/api', require('./routes/paymentRouter'));
 
 
-app.get('/', (req, res) => {
-    res.json({msg: 'Welcome jes'})
-})
-
-
-
-
 //connect to mongoose
 const dbConfig = process.env.dbConfig;
 
