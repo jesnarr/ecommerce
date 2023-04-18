@@ -11,7 +11,8 @@
     "client-install": "cd client && npm install",
     "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "vercel-build": "npm install && npm run start"
+    "vercel-build": "cd client && npm install && npm run build",
+    "build": "node server.js"
   },
   "keywords": [],
   "author": "",
