@@ -7,7 +7,7 @@ const categoryCtrl = {
             const categories = await Category.find();
             res.json(categories)
         }catch(err){
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({msg: err})
         }
     },
     createCategory: async(req,res) => {

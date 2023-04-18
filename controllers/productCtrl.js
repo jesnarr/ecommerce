@@ -10,18 +10,14 @@ class APIfeatures {
     }
     filtering(){
         const queryObj = {...this.queryString} // this.queryString = req.query
-        console.log({before:queryObj}) //before delete page
 
         const excludedFields = ['page','sort','limit']
         excludedFields.forEach(el => delete(queryObj[el]))
-
-        console.log({after:queryObj}) //after delete page
 
 
         let queryStr = JSON.stringify(queryObj)
         queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g, match => '$' + match)
 
-        console.log({queryObj, queryStr})
         // gte = greater than or equal
         // lte = less than or equal
         // lt = less than
@@ -35,7 +31,6 @@ class APIfeatures {
     sorting(){
         if(this.queryString.sort){
             const sortBy = this.queryString.sort.split(',').join(' ')
-            console.log(sortBy);
             this.query = this.query.sort(sortBy)
         }else{
             this.query = this.query.sort('-createdAt')
@@ -59,7 +54,6 @@ class APIfeatures {
 const productCtrl = {
     getProducts: async (req, res) => {
         try{
-           
             const features = new APIfeatures(Products.find(), req.query)
                             .filtering().sorting().paginating();
 
